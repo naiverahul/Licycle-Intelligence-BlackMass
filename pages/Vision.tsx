@@ -35,28 +35,28 @@ export const Vision: React.FC = () => {
              <div className="space-y-12">
                  {[
                      { 
-                         year: "2024", 
+                         year: "2026", 
                          title: "Validation Phase", 
                          desc: "Lab-scale optimization at IIIT Delhi. Batch processing of black mass and process chemistry refinement.",
                          status: "Current",
                          icon: Target
                      },
                      { 
-                         year: "2025", 
+                         year: "2027", 
                          title: "Pilot Facility", 
                          desc: "Establishment of semi-automated pilot line in New Delhi NCR. Target capacity: 100 tons/year.",
                          status: "Upcoming",
                          icon: Zap
                      },
                      { 
-                         year: "2026", 
+                         year: "2028", 
                          title: "Commercial Scale", 
                          desc: "Full-scale industrial plant deployment. Integration with automotive OEM supply chains.",
                          status: "Future",
                          icon: Factory
                      },
                      { 
-                         year: "2028", 
+                         year: "2030", 
                          title: "Global Ecosystem", 
                          desc: "Expansion of technology licensing and decentralized recycling hubs.",
                          status: "Vision",
