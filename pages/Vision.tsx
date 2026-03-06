@@ -44,14 +44,14 @@ export const Vision: React.FC = () => {
                      { 
                          year: "2027", 
                          title: "Pilot Facility", 
-                         desc: "Establishment of semi-automated pilot line in New Delhi NCR. Target capacity: 100 tons/year.",
+                         desc: "Establishment of semi-automated pilot line in New Delhi NCR. Target capacity: 1000 tons/year.",
                          status: "Upcoming",
                          icon: Zap
                      },
                      { 
                          year: "2028", 
                          title: "Commercial Scale", 
-                         desc: "Full-scale industrial plant deployment. Integration with automotive OEM supply chains.",
+                         desc: "Full-scale industrial plant deployment. Integration with automotive OEM supply chains. Target capacity: 5000 tons/year.",
                          status: "Future",
                          icon: Factory
                      },
