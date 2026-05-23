@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "generate:assets": "node scripts/generate-favicons.mjs",
+    "prebuild": "node scripts/generate-favicons.mjs",
+    "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,6 +21,9 @@
     "@tailwindcss/vite": "^4.3.0",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "puppeteer": "^25.0.4",
+    "serve-handler": "^6.1.7",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.3.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"

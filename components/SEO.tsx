@@ -87,7 +87,13 @@ export const organizationSchema = {
   '@type': 'Organization',
   name: SITE.name,
   url: SITE.url,
-  logo: `${SITE.url}/favicon.svg`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE.url}/logo-512.png`,
+    width: 512,
+    height: 512,
+  },
+  image: `${SITE.url}/og-image.png`,
   description: SITE.description,
   email: SITE.email,
   telephone: SITE.phone,
@@ -131,6 +137,6 @@ export const articleSchema = (post: {
   description: post.excerpt,
   author: { '@type': 'Organization', name: post.author },
   datePublished: post.date,
-  publisher: { '@type': 'Organization', name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` } },
+  publisher: { '@type': 'Organization', name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/logo-512.png`, width: 512, height: 512 } },
   mainEntityOfPage: `${SITE.url}/blog/${post.slug}`,
 });

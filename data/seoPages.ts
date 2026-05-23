@@ -3,10 +3,10 @@ import { SEOPageData } from '../types';
 export const SEO_PAGES: Record<string, SEOPageData> = {
   'lithium-ion-battery-recycling': {
     slug: 'lithium-ion-battery-recycling',
-    title: 'Lithium-Ion Battery Recycling | VoltX Resources',
+    title: 'Lithium Ion Battery Recycling India',
     metaDescription:
-      'Advanced lithium-ion battery recycling in India. VoltX Resources recovers 98%+ critical materials through AI-driven diagnostics, black mass processing, and circular economy infrastructure.',
-    keywords: ['lithium ion battery recycling', 'battery recycling India', 'black mass recycling', 'VoltX Resources'],
+      'VoltX Resources provides advanced lithium ion battery recycling in India. AI-driven diagnostics, 98%+ black mass recovery, second-life BESS, and circular economy infrastructure for EV batteries.',
+    keywords: ['lithium ion battery recycling', 'lithium-ion battery recycling', 'lithium ion recycling India', 'battery recycling India', 'black mass recycling', 'VoltX Resources'],
     heroTitle: 'Lithium-Ion Battery Recycling',
     heroSubtitle:
       'Recovering lithium, cobalt, nickel, and manganese from end-of-life EV batteries through intelligent, data-driven recycling infrastructure.',

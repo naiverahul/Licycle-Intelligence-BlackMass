@@ -17,12 +17,12 @@ export const Home: React.FC = () => {
   return (
     <>
       <SEO
-        title="AI-Powered Battery Intelligence & Recycling"
-        description="VoltX Resources builds India's circular battery economy — EV battery repurposing, AI diagnostics, second-life BESS, and lithium-ion battery recycling with 98%+ material recovery."
+        title="Lithium-Ion Battery Recycling India"
+        description="VoltX Resources — lithium ion battery recycling, EV battery repurposing, second-life BESS, AI diagnostics, and 98%+ black mass recovery. India's circular battery economy infrastructure."
         keywords={[
-          'VoltX', 'Voltx Resources', 'lithium ion battery recycling', 'EV battery recycling India',
-          'second life batteries', 'battery energy storage system', 'BESS India', 'battery repurposing',
-          'black mass recycling', 'AI battery diagnostics', 'battery circular economy',
+          'VoltX', 'Voltx Resources', 'lithium ion battery recycling', 'lithium-ion battery recycling India',
+          'EV battery recycling India', 'second life batteries', 'battery energy storage system', 'BESS India',
+          'battery repurposing', 'black mass recycling', 'AI battery diagnostics', 'battery circular economy',
         ]}
         canonical="/"
         schema={organizationSchema}
