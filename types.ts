@@ -39,4 +39,4 @@ export interface BlogPost {
   keywords: string[];
 }
 
-export type InquiryType = 'partnership' | 'investor' | 'oem' | 'pilot' | 'general';
+export type InquiryType = 'partnership' | 'investor' | 'oem' | 'pilot' | 'csr' | 'research' | 'general';

@@ -13,6 +13,8 @@ const TYPE_LABELS: Record<InquiryType, string> = {
   investor: 'Investor Inquiry',
   oem: 'OEM Collaboration',
   pilot: 'Pilot Project Request',
+  csr: 'CSR & Sustainability Collaboration',
+  research: 'Research & Innovation Partnership',
   general: 'General Inquiry',
 };
 
@@ -74,9 +76,16 @@ export const InquiryForm: React.FC<Props> = ({ type = 'general', compact = false
 
       <div className="space-y-1.5">
         <label htmlFor="orgType" className="text-sm font-medium text-gray-300">Organization Type</label>
-        <select id="orgType" name="orgType" defaultValue={type === 'investor' ? 'Investor' : type === 'oem' ? 'Automotive OEM' : ''} className="w-full bg-industrial-900 border border-industrial-600 rounded-lg px-4 py-3 text-white focus:border-electric-500 focus:outline-none transition-colors">
+        <select id="orgType" name="orgType" defaultValue={
+          type === 'investor' ? 'Investor'
+          : type === 'oem' ? 'Automotive OEM'
+          : type === 'csr' ? 'Other'
+          : type === 'research' ? 'Research Institution'
+          : ''
+        } className="w-full bg-industrial-900 border border-industrial-600 rounded-lg px-4 py-3 text-white focus:border-electric-500 focus:outline-none transition-colors">
           <option value="">Select type</option>
           <option>Investor</option>
+          <option>CSR / Sustainability Team</option>
           <option>Battery Manufacturer</option>
           <option>Automotive OEM</option>
           <option>EV Fleet Operator</option>

@@ -11,7 +11,7 @@ import { SEO, organizationSchema } from '../components/SEO';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { HeroVisual } from '../components/HeroVisual';
 import { MetricCounter } from '../components/MetricCounter';
-import { CTASection } from '../components/CTASection';
+import { PartnerSection } from '../components/PartnerSection';
 
 export const Home: React.FC = () => {
   return (
@@ -77,7 +77,7 @@ export const Home: React.FC = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="flex flex-col sm:flex-row items-start gap-4"
               >
-                <Link to="/contact?type=partnership" className="group px-8 py-4 bg-electric-500 text-white font-bold rounded-lg hover:bg-electric-400 transition-all glow-blue flex items-center gap-2">
+                <Link to="/contact?type=csr" className="group px-8 py-4 bg-electric-500 text-white font-bold rounded-lg hover:bg-electric-400 transition-all glow-blue flex items-center gap-2">
                   Partner With Us <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link to="/contact?type=pilot" className="px-8 py-4 border border-industrial-600 text-white font-medium rounded-lg hover:border-electric-500/50 transition-all">
@@ -547,11 +547,8 @@ export const Home: React.FC = () => {
         </div>
       </AnimatedSection>
 
-      {/* 12. Final CTA */}
-      <CTASection
-        title="Join India's Battery Circular Economy"
-        subtitle="Whether you're an investor, OEM, fleet operator, or energy company — let's build sustainable battery infrastructure together."
-      />
+      {/* 12. Partner With Us */}
+      <PartnerSection />
     </>
   );
 };

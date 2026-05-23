@@ -19,7 +19,7 @@ export const NAV_ITEMS = [
   { path: '/technology', label: 'Technology' },
   { path: '/#solution', label: 'Solutions' },
   { path: '/blog', label: 'Blog' },
-  { path: '/contact', label: 'Contact' },
+  { path: '/contact', label: 'Partner With Us' },
 ] as const;
 
 export const SEO_LINKS = [
