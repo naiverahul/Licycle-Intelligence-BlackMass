@@ -1,107 +1,94 @@
-import React from 'react';
-import { Mail, MapPin, ArrowRight, Phone } from 'lucide-react';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Mail, MapPin, Phone, Building2, Handshake, FlaskConical, TrendingUp } from 'lucide-react';
+import { SEO } from '../components/SEO';
 import { AnimatedSection } from '../components/AnimatedSection';
+import { InquiryForm } from '../components/InquiryForm';
+import { SITE } from '../data/siteConfig';
+import { InquiryType } from '../types';
+
+const FORM_TABS: { type: InquiryType; label: string; icon: React.ElementType }[] = [
+  { type: 'partnership', label: 'Partnership', icon: Handshake },
+  { type: 'investor', label: 'Investor', icon: TrendingUp },
+  { type: 'oem', label: 'OEM Collaboration', icon: Building2 },
+  { type: 'pilot', label: 'Pilot Project', icon: FlaskConical },
+];
 
 export const Contact: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const initialType = (searchParams.get('type') as InquiryType) || 'partnership';
+  const [activeType, setActiveType] = useState<InquiryType>(
+    FORM_TABS.some((t) => t.type === initialType) ? initialType : 'partnership'
+  );
+
   return (
-    <div className="pt-32 pb-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          
-          {/* Info Side */}
-          <div className="space-y-12">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-                Partner With Us
-              </h1>
-              <p className="text-xl text-gray-400">
-                Whether you are a battery manufacturer, EV fleet operator, or investor, we want to build the future of the circular economy with you.
-              </p>
-            </div>
+    <>
+      <SEO
+        title="Contact & Partnership Inquiries"
+        description="Partner with VoltX Resources for EV battery recycling, second-life BESS, AI diagnostics, and circular economy infrastructure in India."
+        keywords={['contact VoltX', 'battery recycling partnership', 'BESS pilot project', 'investor inquiry']}
+        canonical="/contact"
+      />
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-industrial-800 p-3 rounded-lg text-neon-500">
-                  <Mail className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg">Email Us</h3>
-                  <a href="mailto:Rahul23418@iiitd.ac.in" className="block text-gray-400 hover:text-white transition-colors">Rahul23418@iiitd.ac.in</a>
-                  <a href="mailto:saksham23576@iiitd.ac.in" className="block text-gray-400 hover:text-white transition-colors">saksham23576@iiitd.ac.in</a>
-                </div>
+      <div className="pt-32 pb-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="space-y-10">
+              <div>
+                <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                  Let's Build Together
+                </h1>
+                <p className="text-xl text-gray-400 leading-relaxed">
+                  Whether you're a battery manufacturer, EV fleet operator, energy company, or investor — we want to build India's circular battery economy with you.
+                </p>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="bg-industrial-800 p-3 rounded-lg text-neon-500">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg">Call Us</h3>
-                  <p className="text-gray-400">+91 99901 93405</p>
-                </div>
+              <div className="space-y-5">
+                {[
+                  { icon: Mail, title: 'Email', content: SITE.emails.map((e) => (<a key={e} href={`mailto:${e}`} className="block text-gray-400 hover:text-white transition-colors">{e}</a>)) },
+                  { icon: Phone, title: 'Phone', content: <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="text-gray-400 hover:text-white transition-colors">{SITE.phone}</a> },
+                  { icon: MapPin, title: 'Location', content: <span className="text-gray-400">{SITE.location}</span> },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <div className="bg-industrial-800 p-3 rounded-lg text-electric-400 shrink-0">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold mb-1">{item.title}</h3>
+                      {item.content}
+                    </div>
+                  </div>
+                ))}
               </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="bg-industrial-800 p-3 rounded-lg text-neon-500">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg">Lab & Operations</h3>
-                  <p className="text-gray-400">Indraprastha Institute of Information Technology</p>
-                  <p className="text-gray-400">New Delhi, India</p>
-                </div>
+
+              <div className="p-6 bg-electric-500/5 border border-electric-500/20 rounded-xl">
+                <h4 className="text-white font-bold mb-2">Pilot Program Open</h4>
+                <p className="text-sm text-gray-400">We are accepting limited battery batches for validation processing and BESS pilot deployments.</p>
               </div>
             </div>
 
-            <div className="p-6 bg-industrial-900 border border-industrial-800 rounded-xl">
-               <h4 className="text-white font-bold mb-2">Looking for a Pilot?</h4>
-               <p className="text-sm text-gray-400 mb-4">We are currently accepting limited material batches for validation processing.</p>
-            </div>
+            <AnimatedSection delay={0.2}>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {FORM_TABS.map((tab) => (
+                  <button
+                    key={tab.type}
+                    onClick={() => setActiveType(tab.type)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      activeType === tab.type
+                        ? 'bg-electric-500 text-white'
+                        : 'bg-industrial-800 text-gray-400 border border-industrial-700 hover:text-white'
+                    }`}
+                  >
+                    <tab.icon size={14} />
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+              <InquiryForm type={activeType} />
+            </AnimatedSection>
           </div>
-
-          {/* Form Side */}
-          <AnimatedSection delay={0.2} className="w-full">
-            <form className="bg-industrial-800/50 p-8 rounded-2xl border border-industrial-700 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">First Name</label>
-                  <input type="text" className="w-full bg-industrial-900 border border-industrial-600 rounded-lg px-4 py-3 text-white focus:border-neon-500 focus:outline-none transition-colors" placeholder="Jane" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Last Name</label>
-                  <input type="text" className="w-full bg-industrial-900 border border-industrial-600 rounded-lg px-4 py-3 text-white focus:border-neon-500 focus:outline-none transition-colors" placeholder="Doe" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">Email</label>
-                <input type="email" className="w-full bg-industrial-900 border border-industrial-600 rounded-lg px-4 py-3 text-white focus:border-neon-500 focus:outline-none transition-colors" placeholder="jane@company.com" />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">Organization Type</label>
-                <select className="w-full bg-industrial-900 border border-industrial-600 rounded-lg px-4 py-3 text-white focus:border-neon-500 focus:outline-none transition-colors">
-                  <option>Investor</option>
-                  <option>Battery Manufacturer</option>
-                  <option>Automotive OEM</option>
-                  <option>Recycling Partner</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">Message</label>
-                <textarea rows={4} className="w-full bg-industrial-900 border border-industrial-600 rounded-lg px-4 py-3 text-white focus:border-neon-500 focus:outline-none transition-colors" placeholder="How can we collaborate?"></textarea>
-              </div>
-
-              <button type="button" className="w-full bg-neon-600 hover:bg-neon-500 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2">
-                Send Inquiry <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          </AnimatedSection>
-
         </div>
       </div>
-    </div>
+    </>
   );
 };

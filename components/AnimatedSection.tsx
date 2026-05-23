@@ -6,14 +6,16 @@ interface Props {
   className?: string;
   delay?: number;
   fullWidth?: boolean;
+  id?: string;
 }
 
-export const AnimatedSection: React.FC<Props> = ({ children, className = "", delay = 0, fullWidth = false }) => {
+export const AnimatedSection: React.FC<Props> = ({ children, className = "", delay = 0, fullWidth = false, id }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
 
   return (
-    <motion.div
+    <motion.section
+      id={id}
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -21,6 +23,6 @@ export const AnimatedSection: React.FC<Props> = ({ children, className = "", del
       className={`${fullWidth ? 'w-full' : 'max-w-7xl mx-auto px-6'} ${className}`}
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 };

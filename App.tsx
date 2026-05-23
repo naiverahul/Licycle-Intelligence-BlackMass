@@ -1,53 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
 import { Home } from './pages/Home';
-import { Challenge } from './pages/Challenge';
 import { Technology } from './pages/Technology';
-import { Vision } from './pages/Vision';
 import { Contact } from './pages/Contact';
-import { Page } from './types';
+import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
+import { SEOPage } from './pages/SEOPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
-
-  // Scroll to top on page change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home': return <Home setPage={setCurrentPage} />;
-      case 'challenge': return <Challenge />;
-      case 'technology': return <Technology />;
-      case 'vision': return <Vision />;
-      case 'contact': return <Contact />;
-      default: return <Home setPage={setCurrentPage} />;
-    }
-  };
-
   return (
-    <div className="min-h-screen flex flex-col bg-industrial-950 font-sans text-gray-200 selection:bg-neon-500 selection:text-black">
-      <Navigation currentPage={currentPage} setPage={setCurrentPage} />
-      
-      <main className="flex-grow pt-20">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-          >
-            {renderPage()}
-          </motion.div>
-        </AnimatePresence>
-      </main>
-
-      <Footer setPage={setCurrentPage} />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen flex flex-col bg-industrial-950 font-sans text-gray-200">
+        <Navigation />
+        <main className="flex-grow pt-20">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/lithium-ion-battery-recycling" element={<SEOPage slug="lithium-ion-battery-recycling" />} />
+            <Route path="/second-life-batteries" element={<SEOPage slug="second-life-batteries" />} />
+            <Route path="/battery-energy-storage-system" element={<SEOPage slug="battery-energy-storage-system" />} />
+            <Route path="/ev-battery-recycling-india" element={<SEOPage slug="ev-battery-recycling-india" />} />
+            <Route path="/battery-repurposing" element={<SEOPage slug="battery-repurposing" />} />
+            <Route path="/ai-battery-diagnostics" element={<SEOPage slug="ai-battery-diagnostics" />} />
+            <Route path="/battery-circular-economy" element={<SEOPage slug="battery-circular-economy" />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
